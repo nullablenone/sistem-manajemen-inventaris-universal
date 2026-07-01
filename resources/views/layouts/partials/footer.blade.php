@@ -1,0 +1,19 @@
+ <div class="mt-10 pt-4 border-t border-gray-200 text-center text-xs text-gray-600">
+     Copyright <span id="tw-current-year"></span> ©
+     <a href="https://moesaid.com/" target="_blank" rel="noopener noreferrer"
+         class="text-teal-600 hover:text-teal-700 hover:underline">
+         Moesaid
+     </a>.
+     All Right Reserved. Distributed by
+     <a href="https://themewagon.com/" target="_blank" rel="noopener noreferrer"
+         class="text-teal-600 hover:text-teal-700 hover:underline">
+         ThemeWagon
+     </a>
+ </div>
+
+ <script>
+     (function() {
+         var el = document.getElementById('tw-current-year');
+         if (el) el.textContent = new Date().getFullYear();
+     })();
+ </script>
