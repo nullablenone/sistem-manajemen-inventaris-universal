@@ -16,8 +16,8 @@
         <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">homes</p>
 
         <!-- link -->
-        <a href="./index.html"
-            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a href="{{ route('dashboard') }}"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('dashboard') ? 'text-teal-600 font-semibold' : '' }}">
             <i class="fad fa-chart-pie text-xs mr-2"></i>
             Analytics dashboard
         </a>
@@ -28,6 +28,16 @@
             class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-shopping-cart text-xs mr-2"></i>
             ecommerce dashboard
+        </a>
+        <!-- end link -->
+
+        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Management</p>
+
+        <!-- link -->
+        <a href="{{ route('categories.index') }}"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('categories.*') ? 'text-teal-600 font-semibold' : '' }}">
+            <i class="fad fa-sitemap text-xs mr-2"></i>
+            categories
         </a>
         <!-- end link -->
 
