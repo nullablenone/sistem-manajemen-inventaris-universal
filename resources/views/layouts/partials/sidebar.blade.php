@@ -41,6 +41,14 @@
         </a>
         <!-- end link -->
 
+        <!-- link -->
+        <a href="{{ route('attributes.index') }}"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('attributes.*') ? 'text-teal-600 font-semibold' : '' }}">
+            <i class="fad fa-tags text-xs mr-2"></i>
+            attributes
+        </a>
+        <!-- end link -->
+
 
 
 
