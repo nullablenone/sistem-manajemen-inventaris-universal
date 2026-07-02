@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-2xl mx-auto mt-6">
+    <div class="max-w-2xl mx-auto my-8">
         <!-- Back Link -->
-        <a href="{{ route('attributes.index') }}" class="mb-4 inline-flex items-center text-sm text-gray-500 hover:text-teal-600 transition-colors">
+        <a href="{{ route('attributes.index') }}" class="mb-6 inline-flex items-center text-sm text-gray-500 hover:text-teal-600 transition-colors">
             <i class="fad fa-arrow-left mr-2"></i> Back to Attributes
         </a>
 
         <!-- Card Container -->
-        <div class="card shadow-md border border-gray-100 bg-white rounded-lg">
-            <div class="card-header p-6 border-b border-gray-100">
+        <div class="card shadow-md border border-gray-250 bg-white rounded-lg">
+            <div class="card-header p-6 border-b border-gray-200">
                 <h1 class="h6 font-extrabold text-gray-800 m-0">Create New Attribute</h1>
-                <p class="text-xs text-gray-500 mt-1">Add a new product attribute and its set of options</p>
+                <p class="text-xs text-gray-500 mt-1.5">Add a new product attribute and its set of options</p>
             </div>
             
             <div class="card-body p-6">
@@ -19,7 +19,7 @@
                     @csrf
 
                     <!-- Name Field -->
-                    <div class="mb-5">
+                    <div class="mb-6">
                         <label for="name" class="block text-xs font-bold text-gray-600 uppercase mb-2">Attribute Name</label>
                         <input type="text" name="name" id="name" value="{{ old('name') }}" 
                                class="w-full p-3 border border-gray-200 rounded text-sm focus:outline-none focus:border-teal-500 bg-gray-50 @error('name') border-red-500 @enderror" 
@@ -30,10 +30,10 @@
                     </div>
 
                     <!-- Attribute Values (Tags Input) -->
-                    <div class="mb-6">
+                    <div class="mb-8">
                         <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Attribute Values</label>
                         
-                        <div id="tagsInputContainer" class="w-full min-h-[50px] p-2 border border-gray-200 rounded bg-gray-50 flex flex-wrap gap-2 items-center focus-within:border-teal-500 focus-within:bg-white transition-all cursor-text">
+                        <div id="tagsInputContainer" class="w-full min-h-[50px] p-2.5 border border-gray-200 rounded bg-gray-50 flex flex-wrap gap-2 items-center focus-within:border-teal-500 focus-within:bg-white transition-all cursor-text">
                             <!-- Tags will be dynamically placed here -->
                             
                             <!-- Inside input -->
@@ -61,7 +61,7 @@
                     </div>
 
                     <!-- Form Actions -->
-                    <div class="flex items-center gap-4 border-t border-gray-50 pt-5">
+                    <div class="flex items-center gap-4 border-t border-gray-100 pt-6 mt-8">
                         <button type="submit" class="btn-bs-primary py-2 px-6 shadow hover:opacity-90 transition-opacity bg-teal-600 text-white rounded font-semibold text-sm">
                             <i class="fad fa-save mr-2"></i> Save Attribute
                         </button>

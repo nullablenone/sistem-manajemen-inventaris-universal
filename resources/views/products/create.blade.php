@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-4xl mx-auto mt-6">
+    <div class="max-w-4xl mx-auto my-8">
         <!-- Back Link -->
-        <a href="{{ route('products.index') }}" class="mb-4 inline-flex items-center text-sm text-gray-500 hover:text-teal-600 transition-colors">
+        <a href="{{ route('products.index') }}" class="mb-6 inline-flex items-center text-sm text-gray-500 hover:text-teal-600 transition-colors">
             <i class="fad fa-arrow-left mr-2"></i> Back to Products
         </a>
 
         <!-- Card Container -->
-        <div class="card shadow-md border border-gray-100 bg-white rounded-lg">
-            <div class="card-header p-6 border-b border-gray-100">
+        <div class="card shadow-md border border-gray-250 bg-white rounded-lg">
+            <div class="card-header p-6 border-b border-gray-200">
                 <h1 class="h6 font-extrabold text-gray-800 m-0">Create New Product</h1>
-                <p class="text-xs text-gray-500 mt-1">Specify product details, category, and configure variants</p>
+                <p class="text-xs text-gray-500 mt-1.5">Specify product details, category, and configure variants</p>
             </div>
             
             <div class="card-body p-6">
@@ -19,7 +19,7 @@
                     @csrf
 
                     <!-- Name Field -->
-                    <div class="mb-5">
+                    <div class="mb-6">
                         <label for="name" class="block text-xs font-bold text-gray-600 uppercase mb-2">Product Name</label>
                         <input type="text" name="name" id="name" value="{{ old('name') }}" 
                                class="w-full p-3 border border-gray-200 rounded text-sm focus:outline-none focus:border-teal-500 bg-gray-50 @error('name') border-red-500 @enderror" 
@@ -30,7 +30,7 @@
                     </div>
 
                     <!-- Category Field -->
-                    <div class="mb-5">
+                    <div class="mb-6">
                         <label for="category_id" class="block text-xs font-bold text-gray-600 uppercase mb-2">Category</label>
                         <select name="category_id" id="category_id" required
                                 class="w-full p-3 border border-gray-200 rounded text-sm focus:outline-none focus:border-teal-500 bg-gray-50 @error('category_id') border-red-500 @enderror">
@@ -47,7 +47,7 @@
                     </div>
 
                     <!-- Description Field -->
-                    <div class="mb-5">
+                    <div class="mb-6">
                         <label for="description" class="block text-xs font-bold text-gray-600 uppercase mb-2">Description</label>
                         <textarea name="description" id="description" rows="4"
                                   class="w-full p-3 border border-gray-200 rounded text-sm focus:outline-none focus:border-teal-500 bg-gray-50 @error('description') border-red-500 @enderror" 
@@ -58,7 +58,7 @@
                     </div>
 
                     <!-- Variant Toggle Checkbox -->
-                    <div class="mb-6 flex items-center gap-3 bg-teal-50 p-4 border border-teal-100 rounded-lg">
+                    <div class="mb-8 flex items-center gap-3 bg-teal-50 p-4 border border-teal-100 rounded-lg shadow-sm">
                         <input type="checkbox" name="has_variant" id="has_variant" value="1" {{ old('has_variant') ? 'checked' : '' }}
                                class="w-5 h-5 text-teal-600 border-gray-300 rounded focus:ring-teal-500 cursor-pointer">
                         <div>
@@ -70,7 +70,7 @@
                     </div>
 
                     <!-- Single Product Inputs (Show/Hide dynamically) -->
-                    <div id="singleProductSection" class="grid grid-cols-2 gap-4 mb-6">
+                    <div id="singleProductSection" class="grid grid-cols-2 gap-6 mb-8">
                         <div>
                             <label for="single_sku" class="block text-xs font-bold text-gray-600 uppercase mb-2">SKU</label>
                             <input type="text" name="single_sku" id="single_sku" value="{{ old('single_sku') }}"
@@ -92,21 +92,21 @@
                     </div>
 
                     <!-- Dynamic Variant Section (Show/Hide dynamically) -->
-                    <div id="variantSection" class="mb-6 border-t border-gray-100 pt-6" style="display: none;">
-                        <h3 class="text-sm font-bold text-gray-800 uppercase mb-4 flex items-center gap-2 text-teal-600">
+                    <div id="variantSection" class="mb-8 border-t border-gray-200 pt-8 mt-8" style="display: none;">
+                        <h3 class="text-sm font-bold text-gray-800 uppercase mb-5 flex items-center gap-2 text-teal-600">
                             <i class="fad fa-sliders-h"></i> Pengaturan Varian Produk
                         </h3>
                         
                         <!-- List of Attributes with Value Checkboxes -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                             @foreach($attributes as $attribute)
                                 @if($attribute->values->count() > 0)
-                                    <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+                                    <div class="bg-gray-50 border border-gray-200 p-5 rounded-lg">
                                         <h4 class="text-sm font-bold text-gray-700 mb-3 flex items-center justify-between border-b border-gray-200 pb-2">
                                             <span>{{ $attribute->name }}</span>
                                             <span class="text-[10px] bg-teal-100 text-teal-700 px-2 py-0.5 rounded-full font-bold">Atribut</span>
                                         </h4>
-                                        <div class="flex flex-wrap gap-2">
+                                        <div class="flex flex-wrap gap-3">
                                             @foreach($attribute->values as $value)
                                                 <label class="flex items-center gap-2 bg-white px-3 py-1.5 border border-gray-200 rounded-md cursor-pointer hover:border-teal-400 hover:bg-teal-50/20 transition-all select-none">
                                                     <input type="checkbox" 
@@ -126,10 +126,10 @@
 
                         <!-- Generated Combinations Table -->
                         <div id="combinationsContainer" style="display: none;">
-                            <h4 class="text-xs font-bold text-gray-600 uppercase mb-3 flex items-center gap-2">
+                            <h4 class="text-xs font-bold text-gray-600 uppercase mb-4 flex items-center gap-2">
                                 <i class="fad fa-table text-teal-500"></i> Kombinasi Varian yang Dihasilkan
                             </h4>
-                            <div class="border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                            <div class="border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm mb-6">
                                 <table class="w-full text-left text-sm" id="combinationsTable">
                                     <thead class="bg-gray-50 border-b border-gray-200 text-xs font-bold text-gray-600 uppercase tracking-wider">
                                         <tr>
@@ -146,14 +146,14 @@
                         </div>
 
                         <!-- Placeholder Message -->
-                        <div id="noCombinationsMessage" class="text-center py-8 bg-gray-50 border border-dashed border-gray-200 rounded-lg text-gray-500 text-xs flex flex-col items-center justify-center gap-2">
+                        <div id="noCombinationsMessage" class="text-center py-8 bg-gray-50 border border-dashed border-gray-200 rounded-lg text-gray-500 text-xs flex flex-col items-center justify-center gap-2 mb-6">
                             <i class="fad fa-tags text-xl text-gray-300"></i>
                             <span>Silakan pilih opsi nilai atribut di atas untuk mulai membuat kombinasi varian otomatis.</span>
                         </div>
                     </div>
 
                     <!-- Form Actions -->
-                    <div class="flex items-center gap-4 border-t border-gray-100 pt-6">
+                    <div class="flex items-center gap-4 border-t border-gray-200 pt-6 mt-8">
                         <button type="submit" class="btn-bs-primary py-2 px-6 shadow hover:opacity-90 transition-opacity bg-teal-600 text-white rounded font-semibold text-sm">
                             <i class="fad fa-save mr-2"></i> Save Product
                         </button>

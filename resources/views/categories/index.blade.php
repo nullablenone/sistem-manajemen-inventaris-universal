@@ -12,15 +12,15 @@
     @endif
 
     <!-- Card Container -->
-    <div class="card mt-6">
+    <div class="card my-8 shadow-md border border-gray-250 bg-white rounded-lg">
         <!-- Card Header -->
-        <div class="card-header flex flex-row justify-between items-center lg:flex-col lg:items-start gap-4">
+        <div class="card-header flex flex-row justify-between items-center lg:flex-col lg:items-start gap-6 p-6 border-b border-gray-200">
             <div>
                 <h1 class="h5 font-extrabold text-gray-800 m-0">Categories</h1>
-                <p class="text-xs text-gray-500 mt-1">Manage your inventory product categories</p>
+                <p class="text-xs text-gray-500 mt-1.5">Manage your inventory product categories</p>
             </div>
             
-            <div class="flex flex-row items-center gap-4 lg:w-full lg:justify-between">
+            <div class="flex flex-row items-center gap-6 lg:w-full lg:justify-between">
                 <!-- Search Form -->
                 <form action="{{ route('categories.index') }}" method="GET" class="flex items-center">
                     <div class="relative">
