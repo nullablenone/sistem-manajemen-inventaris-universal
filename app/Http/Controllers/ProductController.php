@@ -212,7 +212,7 @@ class ProductController extends Controller
             if ($hasVariant) {
                 // Ambil varian lama beserta attribute_values-nya
                 $existingVariants = $product->variants()->with('attributeValues')->get();
-                
+
                 // Map existing variants by attribute values signature
                 $existingMap = [];
                 foreach ($existingVariants as $variant) {
@@ -254,15 +254,30 @@ class ProductController extends Controller
                     }
                 }
             } else {
-                // Jika berubah menjadi single product, hapus semua varian lama
-                $product->variants()->delete();
+                // Skenario: Produk saat ini TIDAK memiliki varian (Single Product)
 
-                // Buat 1 varian baru
-                $product->variants()->create([
-                    'sku' => $validated['single_sku'],
-                    'price' => $validated['single_price'],
-                    'stock' => 0,
-                ]);
+                // Cek apakah sebelumnya produk ini adalah single product (hanya punya 1 varian)
+                // dan tidak terhubung ke tabel pivot attribute_values
+                $existingVariant = $product->variants()->first();
+
+                if ($existingVariant && $product->variants()->count() === 1 && $existingVariant->attributeValues()->count() === 0) {
+                    // Jika sebelumnya memang single product, cukup UPDATE saja agar STOK TIDAK HILANG
+                    $existingVariant->update([
+                        'sku' => $validated['single_sku'],
+                        'price' => $validated['single_price'],
+                    ]);
+                } else {
+                    // Jika sebelumnya adalah produk bervarian (banyak), lalu user mengubahnya menjadi single product
+                    // Maka wajar kita hapus semua varian lamanya
+                    $product->variants()->delete();
+
+                    // Lalu buat 1 varian baru dari awal
+                    $product->variants()->create([
+                        'sku' => $validated['single_sku'],
+                        'price' => $validated['single_price'],
+                        'stock' => 0,
+                    ]);
+                }
             }
         });
 
