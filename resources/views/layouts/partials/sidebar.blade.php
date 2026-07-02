@@ -49,6 +49,14 @@
         </a>
         <!-- end link -->
 
+        <!-- link -->
+        <a href="{{ route('products.index') }}"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('products.*') ? 'text-teal-600 font-semibold' : '' }}">
+            <i class="fad fa-box text-xs mr-2"></i>
+            products
+        </a>
+        <!-- end link -->
+
 
 
 
