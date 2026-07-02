@@ -57,11 +57,34 @@
         </a>
         <!-- end link -->
 
+        <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Logika Mutasi Stok</p>
 
+        <!-- link -->
+        <a href="{{ route('stock.inbound.index') }}"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('stock.inbound.*') ? 'text-teal-600 font-semibold' : '' }}">
+            <i class="fad fa-arrow-alt-down text-xs mr-2 text-green-500"></i>
+            Barang Masuk (Inbound)
+        </a>
+        <!-- end link -->
 
+        <!-- link -->
+        <a href="{{ route('stock.outbound.index') }}"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('stock.outbound.*') ? 'text-teal-600 font-semibold' : '' }}">
+            <i class="fad fa-arrow-alt-up text-xs mr-2 text-red-500"></i>
+            Barang Keluar (Outbound)
+        </a>
+        <!-- end link -->
 
+        <!-- link -->
+        <a href="{{ route('stock.ledger.index') }}"
+            class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 {{ request()->routeIs('stock.ledger.*') ? 'text-teal-600 font-semibold' : '' }}">
+            <i class="fad fa-clipboard-list text-xs mr-2 text-indigo-500"></i>
+            Kartu Stok (Ledger)
+        </a>
+        <!-- end link -->
 
     </div>
     <!-- end sidebar content -->
 
 </div>
+

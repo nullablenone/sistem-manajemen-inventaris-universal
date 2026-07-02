@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StockTransactionController;
+use App\Http\Controllers\StockLedgerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,4 +26,18 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('attributes', AttributeController::class);
     Route::resource('products', ProductController::class);
+
+    // Stock Mutation Logic (Pilar B)
+    Route::prefix('stock')->name('stock.')->group(function () {
+        Route::get('/inbound', [StockTransactionController::class, 'inboundIndex'])->name('inbound.index');
+        Route::get('/inbound/create', [StockTransactionController::class, 'inboundCreate'])->name('inbound.create');
+        Route::post('/inbound', [StockTransactionController::class, 'inboundStore'])->name('inbound.store');
+
+        Route::get('/outbound', [StockTransactionController::class, 'outboundIndex'])->name('outbound.index');
+        Route::get('/outbound/create', [StockTransactionController::class, 'outboundCreate'])->name('outbound.create');
+        Route::post('/outbound', [StockTransactionController::class, 'outboundStore'])->name('outbound.store');
+
+        Route::get('/ledger', [StockLedgerController::class, 'index'])->name('ledger.index');
+    });
 });
+

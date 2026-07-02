@@ -5,25 +5,24 @@
     <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
 
 
-        <!-- card -->
+        <!-- card 1: Inbound -->
         <div class="report-card">
             <div class="card">
                 <div class="card-body flex flex-col">
 
                     <!-- top -->
                     <div class="flex flex-row justify-between items-center">
-                        <div class="h6 text-indigo-700 fad fa-shopping-cart"></div>
-                        <span class="rounded-full text-white badge bg-teal-400 text-xs">
-                            12%
-                            <i class="fal fa-chevron-up ml-1"></i>
+                        <div class="h6 text-green-700 fad fa-arrow-alt-down"></div>
+                        <span class="rounded-full text-white badge bg-green-500 text-xs px-2.5 py-0.5 font-bold font-sans">
+                            Inbound
                         </span>
                     </div>
                     <!-- end top -->
 
                     <!-- bottom -->
                     <div class="mt-8">
-                        <h1 class="h5 num-4"></h1>
-                        <p>items sales</p>
+                        <h1 class="h5 font-extrabold text-gray-900">{{ $totalInbound }} Pcs</h1>
+                        <p class="text-xs text-gray-500 mt-1 font-sans">Total barang masuk</p>
                     </div>
                     <!-- end bottom -->
 
@@ -34,25 +33,24 @@
         <!-- end card -->
 
 
-        <!-- card -->
+        <!-- card 2: Outbound -->
         <div class="report-card">
             <div class="card">
                 <div class="card-body flex flex-col">
 
                     <!-- top -->
                     <div class="flex flex-row justify-between items-center">
-                        <div class="h6 text-red-700 fad fa-store"></div>
-                        <span class="rounded-full text-white badge bg-red-400 text-xs">
-                            6%
-                            <i class="fal fa-chevron-down ml-1"></i>
+                        <div class="h6 text-red-700 fad fa-arrow-alt-up"></div>
+                        <span class="rounded-full text-white badge bg-red-500 text-xs px-2.5 py-0.5 font-bold font-sans">
+                            Outbound
                         </span>
                     </div>
                     <!-- end top -->
 
                     <!-- bottom -->
                     <div class="mt-8">
-                        <h1 class="h5 num-4"></h1>
-                        <p>new orders</p>
+                        <h1 class="h5 font-extrabold text-gray-900">{{ $totalOutbound }} Pcs</h1>
+                        <p class="text-xs text-gray-500 mt-1 font-sans">Total barang keluar</p>
                     </div>
                     <!-- end bottom -->
 
@@ -63,25 +61,24 @@
         <!-- end card -->
 
 
-        <!-- card -->
+        <!-- card 3: Products -->
         <div class="report-card">
             <div class="card">
                 <div class="card-body flex flex-col">
 
                     <!-- top -->
                     <div class="flex flex-row justify-between items-center">
-                        <div class="h6 text-yellow-600 fad fa-sitemap"></div>
-                        <span class="rounded-full text-white badge bg-teal-400 text-xs">
-                            72%
-                            <i class="fal fa-chevron-up ml-1"></i>
+                        <div class="h6 text-yellow-600 fad fa-box"></div>
+                        <span class="rounded-full text-white badge bg-yellow-500 text-xs px-2.5 py-0.5 font-bold font-sans">
+                            Catalog
                         </span>
                     </div>
                     <!-- end top -->
 
                     <!-- bottom -->
                     <div class="mt-8">
-                        <h1 class="h5 num-4"></h1>
-                        <p>total Products</p>
+                        <h1 class="h5 font-extrabold text-gray-900">{{ $totalProducts }} Item</h1>
+                        <p class="text-xs text-gray-500 mt-1 font-sans">Produk terdaftar</p>
                     </div>
                     <!-- end bottom -->
 
@@ -92,25 +89,24 @@
         <!-- end card -->
 
 
-        <!-- card -->
+        <!-- card 4: Physical Stock -->
         <div class="report-card">
             <div class="card">
                 <div class="card-body flex flex-col">
 
                     <!-- top -->
                     <div class="flex flex-row justify-between items-center">
-                        <div class="h6 text-green-700 fad fa-users"></div>
-                        <span class="rounded-full text-white badge bg-teal-400 text-xs">
-                            150%
-                            <i class="fal fa-chevron-up ml-1"></i>
+                        <div class="h6 text-indigo-700 fad fa-warehouse"></div>
+                        <span class="rounded-full text-white badge bg-indigo-500 text-xs px-2.5 py-0.5 font-bold font-sans">
+                            Stock
                         </span>
                     </div>
                     <!-- end top -->
 
                     <!-- bottom -->
                     <div class="mt-8">
-                        <h1 class="h5 num-4"></h1>
-                        <p>new Visitor</p>
+                        <h1 class="h5 font-extrabold text-gray-900">{{ $totalStock }} Pcs</h1>
+                        <p class="text-xs text-gray-500 mt-1 font-sans">Stok fisik tersedia</p>
                     </div>
                     <!-- end bottom -->
 
@@ -420,69 +416,49 @@
         <!-- end Browser Stats -->
 
         <!-- Start Recent Sales -->
-        <div class="card col-span-2 xl:col-span-1">
-            <div class="card-header">Recent Sales</div>
+        <div class="card col-span-2 xl:col-span-1 border border-gray-200">
+            <div class="card-header border-b border-gray-200 font-bold">Transaksi Keluar Terbaru</div>
 
-            <table class="table-auto w-full text-left">
+            <table class="table-auto w-full text-left text-sm">
                 <thead>
-                    <tr>
-                        <th class="px-4 py-2 border-r"></th>
-                        <th class="px-4 py-2 border-r">product</th>
-                        <th class="px-4 py-2 border-r">price</th>
-                        <th class="px-4 py-2">date</th>
+                    <tr class="bg-gray-50 text-gray-700 text-xs uppercase font-semibold">
+                        <th class="px-4 py-3 border-b border-gray-200">No Transaksi</th>
+                        <th class="px-4 py-3 border-b border-gray-200">Detail Item</th>
+                        <th class="px-4 py-3 border-b border-gray-200 text-center">Catatan</th>
+                        <th class="px-4 py-3 border-b border-gray-200 text-center">Tanggal</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-600">
-
-                    <tr>
-                        <td class="border border-l-0 px-4 py-2 text-center text-green-500"><i class="fad fa-circle"></i>
-                        </td>
-                        <td class="border border-l-0 px-4 py-2">Lightning to USB-C Adapter Lightning.</td>
-                        <td class="border border-l-0 px-4 py-2">$<span class="num-2"></span></td>
-                        <td class="border border-l-0 border-r-0 px-4 py-2"><span class="num-2"></span>
-                            minutes ago</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-l-0 px-4 py-2 text-center text-yellow-500"><i class="fad fa-circle"></i>
-                        </td>
-                        <td class="border border-l-0 px-4 py-2">Apple iPhone 8.</td>
-                        <td class="border border-l-0 px-4 py-2">$<span class="num-2"></span></td>
-                        <td class="border border-l-0 border-r-0 px-4 py-2"><span class="num-2"></span>
-                            minutes ago</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-l-0 px-4 py-2 text-center text-green-500"><i class="fad fa-circle"></i>
-                        </td>
-                        <td class="border border-l-0 px-4 py-2">Apple MacBook Pro.</td>
-                        <td class="border border-l-0 px-4 py-2">$<span class="num-2"></span></td>
-                        <td class="border border-l-0 border-r-0 px-4 py-2"><span class="num-2"></span>
-                            minutes ago</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-l-0 px-4 py-2 text-center text-red-500"><i class="fad fa-circle"></i>
-                        </td>
-                        <td class="border border-l-0 px-4 py-2">Samsung Galaxy S9.</td>
-                        <td class="border border-l-0 px-4 py-2">$<span class="num-2"></span></td>
-                        <td class="border border-l-0 border-r-0 px-4 py-2"><span class="num-2"></span>
-                            minutes ago</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-l-0 px-4 py-2 text-center text-yellow-500"><i class="fad fa-circle"></i>
-                        </td>
-                        <td class="border border-l-0 px-4 py-2">Samsung Galaxy S8 256GB.</td>
-                        <td class="border border-l-0 px-4 py-2">$<span class="num-2"></span></td>
-                        <td class="border border-l-0 border-r-0 px-4 py-2"><span class="num-2"></span>
-                            minutes ago</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-l-0 border-b-0 px-4 py-2 text-center text-green-500"><i
-                                class="fad fa-circle"></i></td>
-                        <td class="border border-l-0 border-b-0 px-4 py-2">apple watch.</td>
-                        <td class="border border-l-0 border-b-0 px-4 py-2">$<span class="num-2"></span></td>
-                        <td class="border border-l-0 border-b-0 border-r-0 px-4 py-2"><span class="num-2"></span> minutes
-                            ago</td>
-                    </tr>
-
+                    @forelse($recentSales as $sale)
+                        <tr class="border-b border-gray-100 hover:bg-gray-50/40 transition-colors">
+                            <td class="px-4 py-3 font-mono font-bold text-red-700 text-xs">{{ $sale->transaction_number }}</td>
+                            <td class="px-4 py-3 text-xs">
+                                <ul class="list-disc pl-4 space-y-1">
+                                    @foreach($sale->items as $item)
+                                        @php $v = $item->productVariant; @endphp
+                                        <li>
+                                            <span class="font-semibold text-gray-800">{{ $v->product->name }}</span>
+                                            @if($v->product->has_variant && $v->attributeValues->isNotEmpty())
+                                                <span class="text-gray-500">({{ $v->attributeValues->pluck('value')->implode('/') }})</span>
+                                            @endif
+                                            : <span class="bg-red-50 text-red-700 px-1.5 py-0.2 rounded font-bold">{{ $item->quantity }} pcs</span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </td>
+                            <td class="px-4 py-3 text-xs italic text-center">{{ $sale->note ?? '-' }}</td>
+                            <td class="px-4 py-3 text-xs text-center font-medium">{{ $sale->date->format('d M Y') }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="px-4 py-8 text-center text-gray-500">
+                                <div class="flex flex-col items-center justify-center py-4">
+                                    <i class="fad fa-arrow-alt-up text-3xl text-gray-300 mb-1"></i>
+                                    <p class="font-semibold">Belum Ada Transaksi Keluar</p>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

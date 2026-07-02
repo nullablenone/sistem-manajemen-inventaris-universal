@@ -24,4 +24,25 @@ class ProductVariant extends Model
             'attribute_value_id'      // Foreign key di pivot untuk model target
         );
     }
+
+    // Relasi ke StockMutations (Log Mutasi Stok)
+    public function mutations()
+    {
+        return $this->hasMany(StockMutation::class);
+    }
+
+    // Accessor untuk penamaan varian di form mutasi
+    public function getDisplayNameAttribute()
+    {
+        $productName = $this->product->name;
+        $sku = $this->sku ? " ({$this->sku})" : "";
+        
+        if ($this->product->has_variant && $this->attributeValues->isNotEmpty()) {
+            $variantDetails = $this->attributeValues->pluck('value')->implode(' / ');
+            return "{$productName} - {$variantDetails}{$sku} [Stok: {$this->stock}]";
+        }
+        
+        return "{$productName}{$sku} [Stok: {$this->stock}]";
+    }
 }
+
