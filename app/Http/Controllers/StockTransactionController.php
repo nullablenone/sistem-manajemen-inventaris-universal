@@ -202,10 +202,10 @@ class StockTransactionController extends Controller
     {
         $prefix = $type === 'inbound' ? 'TX-IN' : 'TX-OUT';
         $datePart = date('Ymd', strtotime($dateString));
+        $searchPattern = $prefix . '-' . $datePart . '-%';
 
-        $lastTransaction = StockTransaction::where('type', $type)
-            ->whereDate('date', date('Y-m-d', strtotime($dateString)))
-            ->orderBy('id', 'desc')
+        $lastTransaction = StockTransaction::where('transaction_number', 'like', $searchPattern)
+            ->orderBy('transaction_number', 'desc')
             ->first();
 
         if ($lastTransaction) {
